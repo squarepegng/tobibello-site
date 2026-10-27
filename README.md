@@ -1,4 +1,4 @@
-# Tobi Bello portfolio
+# Toby Bello portfolio
 
 A plain HTML/CSS/JS copy of the site that used to live at tobibello.framer.website.
 No build step, no Framer. Everything it needs (fonts, images) is inside this folder.
