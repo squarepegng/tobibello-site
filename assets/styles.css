@@ -249,7 +249,9 @@ section[id] { scroll-margin-top: 140px; }
 .rt blockquote::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; border-radius: 1px; background: #DDDDDD; }
 .rt blockquote p { font: italic 400 16px/1.8 var(--inter); color: #999999; }
 .rt img { width: 100%; height: auto; }
-.rt > img { margin-top: 0; }
+.rt > img, .rt > .video { margin-top: 32px; border-radius: 12px; overflow: hidden; }
+.rt > img + img, .rt > img + .video, .rt > .video + img, .rt > .video + .video { margin-top: 24px; }
+.rt > img + :not(img):not(.video), .rt > .video + :not(img):not(.video) { margin-top: 32px; }
 .rt .video { position: relative; aspect-ratio: 16 / 9; }
 .rt .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
