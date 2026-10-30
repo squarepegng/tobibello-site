@@ -32,19 +32,40 @@ document.querySelectorAll(".t-quote").forEach((q) => {
   if (person) person.style.setProperty("--after", words.length * 28 + 450 + "ms");
 });
 
-// Elements fade/rise in once they scroll into view
+// Elements fade/rise in once they are properly in view (not just touching the edge)
+document.documentElement.classList.add("js-motion");
 const reveals = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver(
     (entries) => entries.forEach((e) => {
-      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      if (e.isIntersecting) {
+        e.target.classList.add(e.target.classList.contains("appear") ? "seen" : "in");
+        io.unobserve(e.target);
+      }
     }),
-    { rootMargin: "0px 0px -10% 0px" }
+    { rootMargin: "0px 0px -12% 0px", threshold: 0.15 }
   );
   reveals.forEach((el) => io.observe(el));
+  // Top-of-page load-ins start as soon as any part of them is on screen
+  const now = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("seen"); now.unobserve(e.target); } }),
+    { threshold: 0 }
+  );
+  document.querySelectorAll(".appear").forEach((el) => now.observe(el));
 } else {
-  reveals.forEach((el) => el.classList.add("in"));
+  document.querySelectorAll(".reveal, .appear").forEach((el) => el.classList.add("in", "seen"));
 }
+
+// Company names brighten when their row reaches the middle of the screen (or on hover/tap)
+const rows = document.querySelectorAll(".xp-row");
+if (rows.length && "IntersectionObserver" in window) {
+  const band = new IntersectionObserver(
+    (entries) => entries.forEach((e) => e.target.classList.toggle("lit", e.isIntersecting)),
+    { rootMargin: "-35% 0px -35% 0px" }
+  );
+  rows.forEach((r) => band.observe(r));
+}
+rows.forEach((r) => r.addEventListener("click", () => r.classList.toggle("lit")));
 
 // Logo ticker: duplicate the set and scroll left at 70px per second
 const track = document.querySelector(".logos-track");
