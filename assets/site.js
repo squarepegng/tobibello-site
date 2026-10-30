@@ -13,6 +13,25 @@ document.querySelectorAll(".nav-menu a").forEach((a) =>
   a.addEventListener("click", () => a.closest(".nav").classList.remove("open"))
 );
 
+// Prepare extra scroll animations before the observer starts watching
+document.querySelectorAll(".rt > img, .rt > h3, .rt > h4, .rt > blockquote, .rt > .video, .case .info").forEach((el) => el.classList.add("reveal"));
+// Testimonials: wrap each word so the quote can reveal word by word
+document.querySelectorAll(".t-quote").forEach((q) => {
+  const words = q.textContent.trim().split(/\s+/);
+  q.textContent = "";
+  q.classList.add("split");
+  words.forEach((word, i) => {
+    const w = document.createElement("span");
+    w.className = "w";
+    w.style.setProperty("--w", i);
+    w.textContent = word;
+    q.append(w, i < words.length - 1 ? " " : "");
+  });
+  q.setAttribute("aria-label", words.join(" "));
+  const person = q.closest(".t-card")?.querySelector(".person");
+  if (person) person.style.setProperty("--after", words.length * 28 + 450 + "ms");
+});
+
 // Elements fade/rise in once they scroll into view
 const reveals = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window) {
