@@ -83,3 +83,37 @@ if (slider) {
   place(false);
   if (!matchMedia("(prefers-reduced-motion: reduce)").matches) restart();
 }
+
+// Floating nav: add a soft shadow once the page has scrolled
+const header = document.querySelector(".site-header");
+if (header) {
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
+
+// Cursor dot: follows the pointer with a little lag, grows over links, pulses on click
+const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (finePointer && !calm) {
+  const dot = document.createElement("div");
+  dot.className = "cursor-dot";
+  dot.setAttribute("aria-hidden", "true");
+  document.body.appendChild(dot);
+  let x = -100, y = -100, dx = x, dy = y;
+  window.addEventListener("mousemove", (e) => {
+    x = e.clientX; y = e.clientY;
+    if (!dot.classList.contains("on")) { dx = x; dy = y; dot.classList.add("on"); }
+    dot.classList.toggle("hover", !!e.target.closest("a, button, .project, .t-card"));
+  }, { passive: true });
+  document.addEventListener("mouseleave", () => dot.classList.remove("on"));
+  window.addEventListener("mousedown", () => {
+    dot.classList.remove("press"); void dot.offsetWidth; dot.classList.add("press");
+  });
+  const tick = () => {
+    dx += (x - dx) * 0.18; dy += (y - dy) * 0.18;
+    dot.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
