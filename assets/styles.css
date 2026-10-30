@@ -225,8 +225,8 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Motion ---------- */
 /* Load-in: each element rises into place with a spring, staggered by delay. */
-@keyframes rise { from { opacity: var(--from-o, 0); transform: translateY(var(--from-y, 20px)); } to { opacity: 1; transform: none; } }
-.appear { animation: rise var(--dur, 1.1s) var(--spring) var(--delay, 0s) both; }
+@keyframes rise { from { opacity: var(--from-o, 0); transform: translateY(var(--from-y, 24px)); filter: blur(var(--from-blur, 6px)); } to { opacity: 1; transform: none; filter: none; } }
+.appear { animation: rise var(--dur, .9s) cubic-bezier(.16, 1, .3, 1) var(--delay, 0s) both; }
 /* Scroll-in: hidden until the element enters the viewport. */
 .reveal { opacity: 0; transform: translateY(32px); transition: opacity .8s var(--spring), transform .8s var(--spring); }
 .reveal.scale { transform: scale(.95); }
