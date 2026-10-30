@@ -69,9 +69,9 @@ button { font: inherit; color: inherit; }
 .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero-inner { position: relative; width: 100%; max-width: 1200px; margin-top: 141px; padding: 45px 100px 53px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
 .avatar { width: 96px; height: 96px; object-fit: contain; }
-.hero-lines { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 55px; text-align: center; }
+.hero-lines { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 36px; text-align: center; }
 .greeting { font: 600 24px/1.4 var(--display); }
-.headline-wrap { display: flex; flex-direction: column; gap: 12px; }
+.headline-wrap { display: flex; flex-direction: column; gap: 16px; }
 .headline { font: 400 56px/1.1 var(--inter); letter-spacing: -2.5px; }
 .headline span { display: inline-block; }
 .hero-sub { font-size: 18px; line-height: 27px; color: var(--grey-2); }
@@ -80,7 +80,7 @@ button { font: inherit; color: inherit; }
 .stat b { font-weight: 400; font-size: 18px; line-height: 27px; }
 .stat b i { font-style: normal; color: var(--teal); }
 .stat span { font-size: 16px; line-height: 24px; }
-.ctas { display: flex; align-items: center; gap: 16px; }
+.ctas { display: flex; align-items: center; gap: 16px; margin-top: 12px; }
 
 /* ---------- Client logos ---------- */
 .logos { position: relative; height: 93px; display: flex; align-items: center; overflow: hidden; padding: 10px; -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12.5%, #000 87.5%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, #000 12.5%, #000 87.5%, transparent 100%); }
