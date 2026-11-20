@@ -365,3 +365,8 @@ section[id] { scroll-margin-top: 140px; }
   .info div { width: calc(50% - 8px); font-size: 16px; line-height: 24px; }
   .rt h3 { font-size: 20px; }
 }
+
+/* Framed screenshot: show the whole image, on the same grey as its border (no cropping) */
+.frame-img { object-fit: contain !important; background: #e6e7e9; }
+.project-img.frame { background: #e6e7e9; }
+.case-cover.frame-img { aspect-ratio: auto; height: auto; }
