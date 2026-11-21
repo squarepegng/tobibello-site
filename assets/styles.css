@@ -389,3 +389,7 @@ section[id] { scroll-margin-top: 140px; }
 /* Case-study media: a hairline border so screenshots and videos separate from the page */
 .rt > img, .rt > .video, .rt > .video-file, .case-cover { border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 0 0 4px rgba(255, 255, 255, .025); }
 .case-cover { border-radius: 16px; }
+
+/* Case-study media: tighter corners */
+.rt > img, .rt > .video, .rt > .video-file, .rt .diff { border-radius: 6px !important; }
+.case-cover, .case-cover.frame-img { border-radius: 8px !important; }
