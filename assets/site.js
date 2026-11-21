@@ -157,3 +157,14 @@ if (finePointer && !calm) {
   };
   requestAnimationFrame(tick);
 }
+
+// Case-study clips: load and play only while on screen, pause when scrolled away
+const clips = document.querySelectorAll(".video-file video");
+if (clips.length && "IntersectionObserver" in window) {
+  const vo = new IntersectionObserver((entries) => entries.forEach((e) => {
+    const v = e.target;
+    if (e.isIntersecting) { if (v.preload === "none") v.preload = "auto"; v.play().catch(() => {}); }
+    else v.pause();
+  }), { threshold: 0.35 });
+  clips.forEach((v) => vo.observe(v));
+} else clips.forEach((v) => { v.autoplay = true; v.play().catch(() => {}); });
