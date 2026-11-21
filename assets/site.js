@@ -14,7 +14,7 @@ document.querySelectorAll(".nav-menu a").forEach((a) =>
 );
 
 // Prepare extra scroll animations before the observer starts watching
-document.querySelectorAll(".rt > img, .rt > h3, .rt > h4, .rt > blockquote, .rt > .video, .rt > .diff, .case .info").forEach((el) => el.classList.add("reveal"));
+document.querySelectorAll(".rt > img, .rt > h3, .rt > h4, .rt > blockquote, .rt > .video, .rt > .diff, .rt > .video-file, .case .info").forEach((el) => el.classList.add("reveal"));
 // Testimonials: wrap each word so the quote can reveal word by word
 document.querySelectorAll(".t-quote").forEach((q) => {
   const words = q.textContent.trim().split(/\s+/);
