@@ -385,3 +385,7 @@ section[id] { scroll-margin-top: 140px; }
 .rt .diff .del { background: rgba(240, 106, 95, .12); color: #f3a39b; }
 .rt .diff .add { background: rgba(110, 210, 150, .12); color: #9fe3b8; }
 .rt .diff b { font-weight: 700; color: #fff; }
+
+/* Case-study media: a hairline border so screenshots and videos separate from the page */
+.rt > img, .rt > .video, .rt > .video-file, .case-cover { border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 0 0 4px rgba(255, 255, 255, .025); }
+.case-cover { border-radius: 16px; }
