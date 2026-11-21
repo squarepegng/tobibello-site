@@ -370,3 +370,16 @@ section[id] { scroll-margin-top: 140px; }
 .frame-img { object-fit: contain !important; background: #e6e7e9; }
 .project-img.frame { background: #e6e7e9; }
 .case-cover.frame-img { aspect-ratio: auto; height: auto; }
+
+/* Tovi case study: full-frame demo video and screenshots (never crop the editor's bottom toolbar) */
+.case-cover.tovi-video { aspect-ratio: 16 / 10; height: auto; object-fit: contain; background: #121212; display: block; }
+.project-img.tovi { background: #121212; }
+.project-img.tovi img { object-fit: contain; }
+.rt .diff { margin: 32px 0 0; border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden; background: #111; }
+.rt .diff figcaption { display: flex; justify-content: space-between; padding: 10px 16px; font: 500 13px/1.4 var(--inter); color: #8e8e8e; background: #171717; border-bottom: 1px solid #2a2a2a; }
+.rt .diff pre + figcaption { border-top: 1px solid #2a2a2a; }
+.rt .diff pre { margin: 0; padding: 14px 0; overflow-x: auto; font: 13px/1.9 ui-monospace, "SF Mono", Menlo, monospace; }
+.rt .diff code span { display: block; padding: 0 16px; white-space: pre; }
+.rt .diff .del { background: rgba(240, 106, 95, .12); color: #f3a39b; }
+.rt .diff .add { background: rgba(110, 210, 150, .12); color: #9fe3b8; }
+.rt .diff b { font-weight: 700; color: #fff; }
