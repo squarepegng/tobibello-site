@@ -471,3 +471,30 @@ h1, h2, h3, h4, h5, h6 { font-weight: 500; }
 .avail:hover { color: var(--white); }
 .avail:hover svg { transform: translate(2px,-2px); opacity: 1; }
 .more-work[hidden] { display: none; }
+
+/* ---------- Hero type hierarchy: one hero (the headline), everything else steps down ---------- */
+.hero-lines { gap: 0; }
+/* 1. Eyebrow: small, quiet; name in white, role in grey (tone separates them, no glyph) */
+.greeting { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 10px; font: 500 16px/1.4 var(--display); letter-spacing: 0; }
+.greeting .g-name { color: var(--white); }
+.greeting .g-role { color: #8a8a8a; font-weight: 400; }
+/* 2. Headline: the only loud thing */
+.headline-wrap { margin-top: 22px; gap: 22px; align-items: center; }
+.headline { font: 500 72px/1.02 var(--head); letter-spacing: -0.045em; }
+/* 3. Subline: softer, narrower */
+.hero-sub { max-width: 520px; font-size: 18px; line-height: 1.55; color: #8f8f8f; }
+/* 4. Stats: numbers carry it, labels recede */
+.stats { margin-top: 36px; gap: 40px; }
+.stat { flex-direction: column; gap: 2px; }
+.stat b { font: 500 22px/1.2 var(--head); letter-spacing: -0.02em; color: var(--white); }
+.stat b i { color: #8a8a8a; font-weight: 400; }
+.stat span { font-size: 13px; line-height: 1.4; color: #7a7a7a; }
+.ctas { margin-top: 36px; }
+@media (max-width: 809px) {
+  .headline { font-size: 42px; letter-spacing: -0.04em; }
+  .greeting { flex-direction: column; gap: 2px; font-size: 15px; }
+  .hero-sub { font-size: 16px; }
+  .stats { gap: 24px; }
+  .stat b { font-size: 19px; }
+}
+.hero-sub { max-width: 640px; text-wrap: balance; }
