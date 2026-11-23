@@ -168,3 +168,34 @@ if (clips.length && "IntersectionObserver" in window) {
   }), { threshold: 0.35 });
   clips.forEach((v) => vo.observe(v));
 } else clips.forEach((v) => { v.autoplay = true; v.play().catch(() => {}); });
+
+// Hero: headline word reveal, count-up stats, cursor-following light
+(() => {
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const h = document.querySelector(".headline.words");
+  if (h) {
+    let i = 0;
+    h.querySelectorAll(".grad").forEach((line) => {
+      const words = line.textContent.trim().split(/\s+/);
+      line.textContent = "";
+      words.forEach((w, k) => {
+        const s = document.createElement("span"); s.className = "w"; s.style.setProperty("--i", i++); s.textContent = w;
+        line.append(s, k < words.length - 1 ? " " : "");
+      });
+    });
+  }
+  const counters = document.querySelectorAll("[data-count]");
+  if (!calm) counters.forEach((el) => {
+    const end = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), pre = el.dataset.prefix || "", suf = el.dataset.suffix || "";
+    const start = performance.now() + 700, dur = 1600;
+    el.textContent = pre + (0).toFixed(dec) + suf;
+    const tick = (t) => { const k = Math.min(1, Math.max(0, (t - start) / dur)); const e = 1 - Math.pow(1 - k, 3);
+      el.textContent = pre + (end * e).toFixed(dec) + suf; if (k < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  });
+  const hero = document.querySelector(".hero"), glow = document.querySelector(".hero-glow");
+  if (hero && glow && matchMedia("(hover: hover)").matches && !calm) {
+    hero.addEventListener("mousemove", (e) => { const r = hero.getBoundingClientRect();
+      glow.style.setProperty("--gx", e.clientX - r.left + "px"); glow.style.setProperty("--gy", e.clientY - r.top + "px"); }, { passive: true });
+  }
+})();
