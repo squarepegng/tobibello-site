@@ -368,6 +368,8 @@ section[id] { scroll-margin-top: 140px; }
 .case-cover.tovi-video { aspect-ratio: 16 / 10; height: auto; object-fit: contain; background: #121212; display: block; }
 .project-img.tovi { background: #9D80E6; }
 .project-img.tovi img { object-fit: cover; object-position: 50% 50%; }
+/* Tovi thumbnail (16:9): anchor top-left so a narrower card trims only the right, where the window already runs off; top and left margins stay equal. */
+.project-img img[src*="tovi-thumb"], .hs-card img[src*="tovi-thumb"] { object-position: 0 0; }
 .rt > .video-file { margin-top: 32px; border-radius: 12px; overflow: hidden; background: #121212; }
 .rt > .video-file video { display: block; width: 100%; height: auto; aspect-ratio: var(--ar, 16 / 10); }
 .rt .diff { margin: 32px 0 0; border: 1px solid #2a2a2a; border-radius: 12px; overflow: hidden; background: #111; }
