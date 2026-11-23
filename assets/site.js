@@ -199,3 +199,13 @@ if (clips.length && "IntersectionObserver" in window) {
       glow.style.setProperty("--gx", e.clientX - r.left + "px"); glow.style.setProperty("--gy", e.clientY - r.top + "px"); }, { passive: true });
   }
 })();
+
+// More work carousel: arrows scroll one card; disabled at the ends
+document.querySelectorAll(".more-work").forEach((mw) => {
+  const t = mw.querySelector(".mw-track"), prev = mw.querySelector(".mw-prev"), next = mw.querySelector(".mw-next");
+  const step = () => (t.firstElementChild?.getBoundingClientRect().width || 300) + 20;
+  const sync = () => { prev.disabled = t.scrollLeft < 4; next.disabled = t.scrollLeft + t.clientWidth > t.scrollWidth - 4; };
+  prev.addEventListener("click", () => t.scrollBy({ left: -step() }));
+  next.addEventListener("click", () => t.scrollBy({ left: step() }));
+  t.addEventListener("scroll", sync, { passive: true }); window.addEventListener("resize", sync); sync();
+});

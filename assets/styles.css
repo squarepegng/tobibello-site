@@ -445,3 +445,29 @@ h1, h2, h3, h4, h5, h6 { font-weight: 500; }
 .greeting .sep { width: 1px; height: .9em; margin: 0 18px; border-radius: 0; transform: none; background: rgba(255,255,255,.28); box-shadow: none; animation: none; }
 .avail i { background: #34d399; box-shadow: 0 0 0 3px rgba(52,211,153,.15); }
 .avail i::after { display: none; }
+
+/* ---------- More work carousel ---------- */
+.more-work { width: 100%; max-width: 1240px; margin-top: 72px; }
+.mw-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.mw-title { font: 500 24px/1.3 var(--head); letter-spacing: -0.015em; }
+.mw-nav { display: flex; gap: 8px; }
+.mw-nav button { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.03); color: var(--white); cursor: pointer; transition: background .2s, opacity .2s; }
+.mw-nav button:hover { background: rgba(255,255,255,.08); }
+.mw-nav button:disabled { opacity: .35; cursor: default; }
+.mw-nav svg { width: 18px; height: 18px; }
+.mw-track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 40px) / 3); gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px; }
+.mw-track::-webkit-scrollbar { display: none; }
+.mw-card { scroll-snap-align: start; display: flex; flex-direction: column; gap: 14px; }
+.mw-img { aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); background: #1a1a1a; }
+.mw-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.16,1,.3,1); }
+.mw-card:hover .mw-img img { transform: scale(1.04); }
+.mw-text h4 { font: 500 18px/1.3 var(--head); letter-spacing: -0.01em; }
+.mw-text span { font-size: 14px; color: var(--grey); }
+@media (max-width: 809px) { .mw-track { grid-auto-columns: 82%; } .more-work { margin-top: 48px; } }
+
+/* Availability: plain monochrome pill, no status dot */
+.avail { gap: 6px; padding: 7px 12px 7px 14px; color: var(--grey-2); }
+.avail svg { width: 14px; height: 14px; opacity: .7; transition: transform .25s ease, opacity .25s; }
+.avail:hover { color: var(--white); }
+.avail:hover svg { transform: translate(2px,-2px); opacity: 1; }
+.more-work[hidden] { display: none; }
