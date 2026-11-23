@@ -441,3 +441,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 500; }
 .headline.words .w { background-image: linear-gradient(0deg, #999999 0%, #FFFFFF 75%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; padding-bottom: .08em; }
 .stat b em { font-style: normal; font-variant-numeric: tabular-nums; }
 @media (max-width: 809px) { .greeting { flex-direction: column; gap: 2px; } .greeting .sep { display: none; } }
+/* Calmer accents: one coloured dot only (availability), a hairline divider in the name line */
+.greeting .sep { width: 1px; height: .9em; margin: 0 18px; border-radius: 0; transform: none; background: rgba(255,255,255,.28); box-shadow: none; animation: none; }
+.avail i { background: #34d399; box-shadow: 0 0 0 3px rgba(52,211,153,.15); }
+.avail i::after { display: none; }
